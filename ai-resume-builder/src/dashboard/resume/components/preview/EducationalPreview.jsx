@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function ProfessionalExpreiencePreview({ resumeInfo }) {
+function EducationalPreview({ resumeInfo }) {
 	return (
 		<div className='my-6'>
 			<h2
@@ -11,16 +11,15 @@ function ProfessionalExpreiencePreview({ resumeInfo }) {
 					color: resumeInfo?.themeColor,
 				}}
 			>
-				Professioinal Experiene
+				Educational Background
 			</h2>
-
 			<hr
 				style={{
 					borderColor: resumeInfo?.themeColor,
 				}}
 			/>
 
-			{resumeInfo?.experience.map((experience, index) => (
+			{resumeInfo?.education.map((education, index) => (
 				<div key={index} className='my-5'>
 					<h2
 						className='text-sm font-bold'
@@ -28,20 +27,19 @@ function ProfessionalExpreiencePreview({ resumeInfo }) {
 							color: resumeInfo?.themeColor,
 						}}
 					>
-						{experience?.title}
+						{education?.universityName}
 					</h2>
 					<h2 className='text-xs flex justify-between'>
-						{experience?.companyName},{experience?.city},{experience?.state}
+						{education?.degree} in {education?.major}
 						<span>
-							{experience?.startDate}{" "}
-							{experience?.currentlyWorking ? "Present" : experience?.endDate}
+							{education?.startDate} - {education?.endDate}
 						</span>
 					</h2>
-					<p className='text-xs my-2'>{experience?.workSummery}</p>
+					<p className='text-xs my-2'>{education?.description}</p>
 				</div>
 			))}
 		</div>
 	);
 }
 
-export default ProfessionalExpreiencePreview;
+export default EducationalPreview;
