@@ -37,7 +37,7 @@ function ProfessionalExpreiencePreview({ resumeInfo }) {
 							{experience?.currentlyWorking ? "Present" : experience?.endDate}
 						</span>
 					</h2>
-					<p className='text-xs my-2'>{experience?.workSummery}</p>
+					<p className='text-xs my-2'>{experience?.workSummary}</p>
 				</div>
 			))}
 		</div>
