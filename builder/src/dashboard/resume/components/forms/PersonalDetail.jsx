@@ -1,39 +1,53 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/input";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
+import GlobalApi from "../../../../service/GlobalApi";
+// import { error } from "console";
+import { LoaderCircle } from "lucide-react";
 // import { Input } from "";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 function PersonalDetail({ enableNext }) {
+	const params = useParams();
 	const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+	const [formData, setFormData] = useState();
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		console.log(params);
+	}, []);
 	const handleInputChange = (e) => {
 		enableNext(false);
 		// setResumeInfo({...resumeInfo,[e.target.name]:e.target.value})
 		// console.log(e.target);
 		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
 		setResumeInfo({ ...resumeInfo, [name]: value });
 	};
 	const onSave = (e) => {
 		e.preventDefault();
+		setLoading(true);
 		// Add validation logic here before enabling "Next"
-
-		enableNext(true);
-
-		// Show validation errors to the user
-		// console.log("failed");
-	};
-
-	// Form validation function (example, replace with your specific logic)
-	const isValidForm = (data) => {
-		return (
-			data.firstName &&
-			data.jobTitle &&
-			data.address &&
-			data.phone &&
-			data.email
+		const data = {
+			data: formData,
+		};
+		GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
+			(res) => {
+				console.log(res);
+				setLoading(false);
+				toast("Details updated");
+				enableNext(true);
+			},
+			(error) => {
+				setLoading(false);
+			}
 		);
 	};
+
 	return (
 		<div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
 			<h2 className='font-bold text-lg'>Personal Details</h2>
@@ -68,7 +82,9 @@ function PersonalDetail({ enableNext }) {
 					</div>
 				</div>
 				<div className='mt-3 flex justify-end'>
-					<Button type='submit'>Save</Button>
+					<Button type='submit' disabled={loading}>
+						{loading ? <LoaderCircle className='animate-spin' /> : "Save"}
+					</Button>
 				</div>
 			</form>
 		</div>
