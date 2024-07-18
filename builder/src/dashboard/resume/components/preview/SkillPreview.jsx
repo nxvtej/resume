@@ -28,9 +28,9 @@ function SkillPreview({ resumeInfo }) {
 								className='h-2 '
 								style={{
 									backgroundColor: resumeInfo?.themeColor,
-									width: skill.rating*20 + "%",
-								}}
-							></div>
+									width: (skill?.rating)*20 + "%", 
+								}} 
+							> {console.log(typeof skill.rating + skill.rating)}</div>
 						</div>
 					</div>
 				))}

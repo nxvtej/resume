@@ -52,7 +52,7 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
 	// };
 
 	const generateSummaryFromAI = async () => {
-		if (!resumeInfo?.experience[index]?.title) {
+		if (!resumeInfo?.Experience[index]?.title) {
 			toast("Please Add Position Title");
 			return;
 		}
@@ -62,7 +62,7 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
 		try {
 			const prompt = PROMPT.replace(
 				"{positionTitle}",
-				resumeInfo.experience[index].title
+				resumeInfo.Experience[index].title
 			);
 
 			console.log(prompt);

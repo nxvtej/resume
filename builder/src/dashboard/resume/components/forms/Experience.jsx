@@ -45,7 +45,7 @@ function Experience() {
 		console.log(experinceList);
 		setResumeInfo({
 			...resumeInfo,
-			experience: experinceList,
+			Experience: experinceList,
 		});
 	}, [experinceList]);
 
