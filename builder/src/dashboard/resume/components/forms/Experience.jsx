@@ -34,6 +34,13 @@ function Experience() {
 
 		setExperinceList(newEntries);
 	};
+
+	useEffect(()=>{
+        resumeInfo?.Experience?.length>0&&setExperinceList(resumeInfo?.Experience)
+        
+    },[])
+
+
 	useEffect(() => {
 		console.log(experinceList);
 		setResumeInfo({
@@ -61,7 +68,7 @@ function Experience() {
 		setLoading(true);
 		const data = {
 			data: {
-				Experience: experinceList.map(({ id, ...rest }) => rest),
+				Experience: experinceList.map(({ id, ...rest }) => rest), //just  to remove the id as i dont have it in database defined for each one
 			},
 		};
 
