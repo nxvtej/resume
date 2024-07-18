@@ -2,22 +2,32 @@
 import React, { act, useState } from "react";
 import PersonalDetail from "./forms/PersonalDetail";
 import { Button } from "@/components/ui/Button";
-import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
+import { ArrowLeft, ArrowRight, Home, LayoutGrid } from "lucide-react";
 import Summary from "./forms/Summary";
 import Experience from "./forms/Experience";
 import Educations from "./forms/Educations";
 import Skills from "./forms/Skills";
+import { Link } from "react-router-dom";
 
 const FormSection = () => {
 	const [activeFormIndex, setActiveFormIndex] = useState(1);
 	const [enableNext, setEnableNext] = useState(true);
 	return (
 		<div>
+			
+
+			
 			<div className='flex items-center justify-between'>
+			<div className="flex gap-2">
+				<Link to={'/dashboard'}>
+				
+				<Button  size='sm' className='flex gap-2'> <Home /> </Button>
+				</Link>
 				<Button variant='outline' size='sm' className='flex gap-2'>
 					<LayoutGrid />
 					Theme
 				</Button>
+				</div>
 				<div className='flex gap-2'>
 					{activeFormIndex > 1 && (
 						<Button

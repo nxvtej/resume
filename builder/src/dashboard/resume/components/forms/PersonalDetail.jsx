@@ -17,9 +17,6 @@ function PersonalDetail({ enableNext }) {
 	const [formData, setFormData] = useState();
 	const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		console.log(params);
-	}, []);
 	const handleInputChange = (e) => {
 		enableNext(false);
 		// setResumeInfo({...resumeInfo,[e.target.name]:e.target.value})

@@ -26,6 +26,14 @@ function Skills() {
     useEffect(()=>{
         resumeInfo?.skills?.length>0&&setSkillsList(resumeInfo?.skills)
       },[])
+
+
+      useEffect(()=>{
+        setResumeInfo({
+            ...resumeInfo,
+            skills:skillsList
+        })
+    },[skillsList]) //skills list here 
    
     const handleChange=(index,name,value)=>{
         const newEntries=skillsList.slice();
@@ -65,12 +73,7 @@ function Skills() {
         })
     }
 
-    useEffect(()=>{
-        setResumeInfo({
-            ...resumeInfo,
-            skills:skillsList
-        })
-    },[skillsList]) //skills list here 
+    
 
 
   return (
