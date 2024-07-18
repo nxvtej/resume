@@ -14,12 +14,12 @@ export const DashboardPage = () => {
 	}, [user]);
 
 	/**
-	 * use to get reume list
+	 * use to get resume list
 	 */
 	const GetResumeList = () => {
 		GlobalApi.GetUserResume(user?.primaryEmailAddress?.emailAddress).then(
 			(res) => {
-				console.log(res.data);
+				// console.log(res.data);
 				setResumeList(res.data.data);
 			}
 		);

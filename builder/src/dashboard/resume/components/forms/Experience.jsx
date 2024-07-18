@@ -8,6 +8,8 @@ import React, { useContext, useEffect, useState } from "react";
 import RichTextEditor from "../RichTextEditor";
 import { useParams } from "react-router-dom";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
+import GlobalApi from "../../../../service/GlobalApi";
+import { toast } from "sonner";
 
 const formField = {
 	title: "",
@@ -53,6 +55,29 @@ function Experience() {
 	};
 	const RemoveExperience = () => {
 		setExperinceList((experinceList) => experinceList.slice(0, -1));
+	};
+
+	const onSave = () => {
+		setLoading(true);
+		const data = {
+			data: {
+				Experience: experinceList.map(({ id, ...rest }) => rest),
+			},
+		};
+
+		console.log(typeof data);
+		console.log(data);
+
+		GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
+			(res) => {
+				console.log(res);
+				setLoading(false);
+				toast("Details updated !");
+			},
+			(error) => {
+				setLoading(false);
+			}
+		);
 	};
 
 	return (
@@ -149,7 +174,12 @@ function Experience() {
 						</Button>
 					</div>
 
-					<Button disabled={loading} onClick={() => {}}>
+					<Button
+						disabled={loading}
+						onClick={() => {
+							onSave();
+						}}
+					>
 						{loading ? <LoaderCircle className='animate-spin' /> : "Save"}
 					</Button>
 				</div>
@@ -169,27 +199,7 @@ import GlobalApi from "../../../../service/GlobalApi";
 			setExperinceList(resumeInfo?.Experience);
 	}, []);
 
-	const onSave = () => {
-		setLoading(true);
-		const data = {
-			data: {
-				Experience: experinceList.map(({ id, ...rest }) => rest),
-			},
-		};
-
-		console.log(experinceList);
-
-		GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
-			(res) => {
-				console.log(res);
-				setLoading(false);
-				toast("Details updated !");
-			},
-			(error) => {
-				setLoading(false);
-			}
-		);
-	};
+	
 
 
 */
