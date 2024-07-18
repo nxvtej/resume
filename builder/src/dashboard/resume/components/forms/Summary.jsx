@@ -39,7 +39,7 @@ const Summary = ({ enableNext }) => {
 		setLoading(false);
 	};
 	*/
-	const GenerateSummeryFromAI = async () => {
+	const GenerateSummaryFromAI = async () => {
 		setLoading(true);
 		const PROMPT = prompt.replace("{jobTitle}", resumeInfo?.jobTitle);
 		console.log(PROMPT);
@@ -76,8 +76,8 @@ const Summary = ({ enableNext }) => {
 	return (
 		<div>
 			<div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
-				<h2 className='font-bold text-lg'>summary</h2>
-				<p>Add summary foy your job title</p>
+				<h2 className='font-bold text-lg'>Summary</h2>
+				<p>Add Summary for your job Title</p>
 
 				<form className='mt-7' onSubmit={onSave}>
 					<div className='flex justify-between items-end'>
@@ -87,7 +87,7 @@ const Summary = ({ enableNext }) => {
 							className='border-primary text-primary gap-2'
 							size='sm'
 							variant='outline'
-							onClick={GenerateSummeryFromAI}
+							onClick={GenerateSummaryFromAI}
 						>
 							<Brain />
 							Generate from AI
@@ -95,7 +95,7 @@ const Summary = ({ enableNext }) => {
 					</div>
 					<Textarea
 						required
-						className='mt-3'
+						className='mt-5'
 						value={summary}
 						defaultValue={summary ? summary : resumeInfo?.summary}
 						onChange={(e) => setSummary(e.target.value)}

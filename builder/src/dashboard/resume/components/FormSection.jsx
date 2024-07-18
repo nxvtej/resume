@@ -4,10 +4,11 @@ import PersonalDetail from "./forms/PersonalDetail";
 import { Button } from "@/components/ui/Button";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import Summary from "./forms/Summary";
+import Experience from "./forms/Experience";
 
 const FormSection = () => {
 	const [activeFormIndex, setActiveFormIndex] = useState(1);
-	const [enableNext, setEnableNext] = useState(false);
+	const [enableNext, setEnableNext] = useState(true);
 	return (
 		<div>
 			<div className='flex items-center justify-between'>
@@ -47,6 +48,10 @@ const FormSection = () => {
 				<Summary enableNext={(v) => setEnableNext(v)} />
 			) : null}
 			{/* Experienc */}
+
+			{activeFormIndex == 3 ? (
+				<Experience enableNext={(v) => setEnableNext(v)} />
+			) : null}
 
 			{/* Educational Details */}
 			{/* skills */}
