@@ -8,6 +8,7 @@ import DashboardPage from "./dashboard/index.jsx";
 import HomePage from "./home/index.jsx";
 import { SigninPage } from "./auth/signin/index.jsx";
 import EditResume from "./dashboard/resume/[resumeId]/edit/index.jsx";
+import ViewResume from "./my-resume/[resumeId]/view/index.jsx";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
 		path: "/",
 		element: <HomePage />,
 	},
+	{
+		path: '/my-resume/:resumeId/view',
+		element: <ViewResume />
+	}
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

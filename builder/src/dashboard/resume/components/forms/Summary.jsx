@@ -11,7 +11,7 @@ import { Brain, LoaderCircle } from "lucide-react";
 import { chatSession } from "../../../../service/AiModal";
 
 const prompt =
-	"JobTitle: full stack developer,  Depends on job title give me summary for my resume within 4-5 lines in JSON format with field experience_level and Summary with Experience level for Fresher, Mid-Level, Experience";
+	"Job Title: {jobTitle},  Depends on job title give me summary for my resume within 4-5 lines in JSON format with field experience_level and Summary with Experience level for Fresher, Mid-Level, Experience";
 const Summary = ({ enableNext }) => {
 	const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 	const [summary, setSummary] = useState();
@@ -46,7 +46,7 @@ const Summary = ({ enableNext }) => {
 		console.log(result);
 		console.log(JSON.parse(result.response.text()));
 		const parsedResponse = JSON.parse(result.response.text());
-		const summaries = parsedResponse.Summaries;
+		const summaries = parsedResponse.experience_levels;
 		console.log(summaries);
 		setAiGeneratedSummaryList(summaries);
 		setLoading(false);

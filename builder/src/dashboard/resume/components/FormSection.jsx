@@ -7,11 +7,13 @@ import Summary from "./forms/Summary";
 import Experience from "./forms/Experience";
 import Educations from "./forms/Educations";
 import Skills from "./forms/Skills";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
+import ViewResume from "@/my-resume/[resumeId]/view";
 
 const FormSection = () => {
 	const [activeFormIndex, setActiveFormIndex] = useState(1);
 	const [enableNext, setEnableNext] = useState(true);
+	const { resumeId } = useParams(); 
 	return (
 		<div>
 			
@@ -74,6 +76,11 @@ const FormSection = () => {
 			{activeFormIndex == 5 ? (
 				<Skills enableNext={(v) => setEnableNext(v)} />
 			) : null}
+
+			{activeFormIndex == 6 ? (
+				<Navigate to={'/my-resume/'+resumeId+'/view'} />
+
+) : null}
 		</div>
 	);
 };
