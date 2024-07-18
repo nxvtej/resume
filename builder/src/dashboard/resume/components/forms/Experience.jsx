@@ -69,6 +69,8 @@ function Experience() {
 		const data = {
 			data: {
 				Experience: experinceList.map(({ id, ...rest }) => rest), //just  to remove the id as i dont have it in database defined for each one
+				themeColor: "#ff6666"
+			
 			},
 		};
 

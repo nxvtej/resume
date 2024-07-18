@@ -58,7 +58,9 @@ function Skills() {
         setLoading(true);
         const data={
             data:{
-                skills:skillsList.map(({ id, ...rest }) => rest)
+                skills:skillsList.map(({ id, ...rest }) => rest),
+				themeColor: "#ff6666"
+
             }
         }
 

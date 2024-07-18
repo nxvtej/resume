@@ -11,7 +11,7 @@ function PersonalDetailPreview({ resumeInfo }) {
 					color: resumeInfo?.themeColor,
 				}}
 			>
-				{console.log(typeof resumeInfo.themeColor)}
+				{/* {console.log(typeof resumeInfo.themeColor)} */}
 				{resumeInfo?.firstName} {resumeInfo?.lastName}
 			</h2>
 			<h2

@@ -30,7 +30,7 @@ function SkillPreview({ resumeInfo }) {
 									backgroundColor: resumeInfo?.themeColor,
 									width: (skill?.rating)*20 + "%", 
 								}} 
-							> {console.log(typeof skill.rating + skill.rating)}</div>
+							> </div>
 						</div>
 					</div>
 				))}

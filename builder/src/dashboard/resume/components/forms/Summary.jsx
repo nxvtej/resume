@@ -59,6 +59,8 @@ const Summary = ({ enableNext }) => {
 		const data = {
 			data: {
 				summary: summary,
+				themeColor: "#ff6666"
+
 			},
 		};
 		console.log(params?.resumeId);
