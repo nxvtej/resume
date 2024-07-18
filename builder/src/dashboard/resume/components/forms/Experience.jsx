@@ -4,8 +4,10 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/input";
 import { LoaderCircle } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import RichTextEditor from "../RichTextEditor";
+import { useParams } from "react-router-dom";
+import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 
 const formField = {
 	title: "",
@@ -18,6 +20,9 @@ const formField = {
 };
 
 function Experience() {
+	const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+	const params = useParams();
+
 	const [experinceList, setExperinceList] = useState([formField]);
 	const [loading, setLoading] = useState(false);
 
@@ -29,6 +34,10 @@ function Experience() {
 	};
 	useEffect(() => {
 		console.log(experinceList);
+		setResumeInfo({
+			...resumeInfo,
+			experience: experinceList,
+		});
 	}, [experinceList]);
 
 	const handleChange = (index, event) => {
@@ -154,22 +163,11 @@ export default Experience;
 
 import GlobalApi from "../../../../service/GlobalApi";
 
-	const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-	const params = useParams();
 	
 	useEffect(() => {
 		resumeInfo?.Experience.length > 0 &&
 			setExperinceList(resumeInfo?.Experience);
 	}, []);
-
-	const handleChange = (index, event) => {
-		const newEntries = experinceList.slice();
-		const { name, value } = event.target;
-		newEntries[index][name] = value;
-		console.log(newEntries);
-		setExperinceList(newEntries);
-	}
-	;
 
 	const onSave = () => {
 		setLoading(true);
