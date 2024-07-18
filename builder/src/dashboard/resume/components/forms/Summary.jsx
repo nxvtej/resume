@@ -8,8 +8,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Brain, LoaderCircle } from "lucide-react";
-import { chatSession, parseGeminiResponse } from "../../../../service/AiModal";
-import { useTheme } from "next-themes";
+import { chatSession } from "../../../../service/AiModal";
 
 const prompt =
 	"JobTitle: full stack developer,  Depends on job title give me summary for my resume within 4-5 lines in JSON format with field experience_level and Summary with Experience level for Fresher, Mid-Level, Experience";
@@ -42,11 +41,14 @@ const Summary = ({ enableNext }) => {
 	const GenerateSummaryFromAI = async () => {
 		setLoading(true);
 		const PROMPT = prompt.replace("{jobTitle}", resumeInfo?.jobTitle);
-		console.log(PROMPT);
-		const result = await chatSession.sendMessage(PROMPT);
-		console.log(JSON.parse(result.response.text()));
 
-		setAiGeneratedSummaryList(JSON.parse(result.response.text()));
+		const result = await chatSession.sendMessage(PROMPT);
+		console.log(result);
+		console.log(JSON.parse(result.response.text()));
+		const parsedResponse = JSON.parse(result.response.text());
+		const summaries = parsedResponse.Summaries;
+		console.log(summaries);
+		setAiGeneratedSummaryList(summaries);
 		setLoading(false);
 	};
 
@@ -111,16 +113,16 @@ const Summary = ({ enableNext }) => {
 				<div className='my-5'>
 					<h2 className='font-bold text-lg'>Suggestions</h2>
 
-					{aiGeneratedSummaryList.experience_levels?.map((item, index) => (
+					{aiGeneratedSummaryList?.map((item, index) => (
 						<div
 							key={index}
 							onClick={() => setSummary(item?.Summary)}
 							className='p-5 shadow-lg my-4 rounded-lg cursor-pointer'
 						>
 							<h2 className='font-bold my-1 text-primary'>
-								Level: {item?.Experience_level}
+								Level: {item.experience_level}
 							</h2>
-							<p>{item?.summary}</p>
+							<p>{item.Summary}</p>
 						</div>
 					))}
 				</div>

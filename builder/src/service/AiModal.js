@@ -41,13 +41,3 @@ export const chatSession = model.startChat({
 	// See https://ai.google.dev/gemini-api/docs/safety-settings
 	history: [],
 });
-
-export async function parseGeminiResponse(response) {
-	const rawResponse = await response.text(); // Get raw response as text
-	try {
-		return JSON.parse(rawResponse);
-	} catch (error) {
-		console.error("Error parsing Gemini response:", error);
-		return null; // Or throw an error if you prefer
-	}
-}
