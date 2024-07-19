@@ -20,6 +20,8 @@ function ProfessionalExpreiencePreview({ resumeInfo }) {
 				}}
 			/>
 
+
+		{	console.log(resumeInfo?.Experienc)}
 			{resumeInfo?.Experience?.map((experience, index) => (
 				<div key={index} className='my-5'>
 					<h2

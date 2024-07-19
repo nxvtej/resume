@@ -32,9 +32,8 @@ function PersonalDetail({ enableNext }) {
 		setLoading(true);
 		// Add validation logic here before enabling "Next"
 		const color = "#ff6666"
-		const dataArray = {...formData, themeColor:color}
 		const data = {
-			data: dataArray,
+			data: formData,
 		};
 		console.log(data);
 		GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(

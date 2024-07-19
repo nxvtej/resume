@@ -9,6 +9,7 @@ import Educations from "./forms/Educations";
 import Skills from "./forms/Skills";
 import { Link, Navigate, useParams } from "react-router-dom";
 import ViewResume from "@/my-resume/[resumeId]/view";
+import ThemeColor from "./ThemeColor";
 
 const FormSection = () => {
 	const [activeFormIndex, setActiveFormIndex] = useState(1);
@@ -25,10 +26,10 @@ const FormSection = () => {
 				
 				<Button  size='sm' className='flex gap-2'> <Home /> </Button>
 				</Link>
-				<Button variant='outline' size='sm' className='flex gap-2'>
-					<LayoutGrid />
-					Theme
-				</Button>
+				
+					
+					<ThemeColor />
+		
 				</div>
 				<div className='flex gap-2'>
 					{activeFormIndex > 1 && (
