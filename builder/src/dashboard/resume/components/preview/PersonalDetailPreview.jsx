@@ -16,9 +16,9 @@ function PersonalDetailPreview({ resumeInfo }) {
 			</h2>
 			<h2
 				className='text-center text-sm font-medium'
-				style={{
-					color: resumeInfo?.themeColor,
-				}}
+				// style={{
+				// 	color: resumeInfo?.themeColor,
+				// }}
 			>
 				{resumeInfo?.jobTitle}
 			</h2>

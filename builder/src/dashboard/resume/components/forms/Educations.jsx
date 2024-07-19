@@ -65,7 +65,7 @@ const Educations = () => {
 		const data = {
 			data: {
 				education: educationalList.map(({ id, ...rest }) => rest),
-				themeColor: "#ff6666"
+				
 			},
 		};
 

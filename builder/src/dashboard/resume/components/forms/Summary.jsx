@@ -59,7 +59,7 @@ const Summary = ({ enableNext }) => {
 		const data = {
 			data: {
 				summary: summary,
-				themeColor: "#ff6666"
+			
 
 			},
 		};

@@ -59,7 +59,7 @@ function Skills() {
         const data={
             data:{
                 skills:skillsList.map(({ id, ...rest }) => rest),
-				themeColor: "#ff6666"
+				
 
             }
         }
